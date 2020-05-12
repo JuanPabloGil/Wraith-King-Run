@@ -1,5 +1,4 @@
 import heroImg from "./assets/sprites/hero.png";
-import groundImg from "./assets/maps/ground.png";
 
 class Bootloader extends Phaser.Scene{
   constructor() {
@@ -7,11 +6,13 @@ class Bootloader extends Phaser.Scene{
   }
 
   preload(){
-    this.load.image('ground', groundImg );
+    this.load.image("tiles", "src/assets/maps/plates.png");
+    this.load.tilemapTiledJSON("map", "src/assets/maps/map.json");
     this.load.spritesheet('hero', heroImg, {
       frameWidth:16,
       frameHeight: 16
     });
+
   }
 
   create() {
