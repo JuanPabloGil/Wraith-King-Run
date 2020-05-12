@@ -5,30 +5,20 @@ class PlayGame extends Phaser.Scene{
 
   create(){
 
-    this.platforms = this.physics.add.staticGroup();
-    //plataform
-    this.platforms.create(0, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(100, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(200, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(300, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(400, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(500, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(600, 600, 'ground').setScale(1).refreshBody();
-    this.platforms.create(700, 600, 'ground').setScale(1).refreshBody();
+    const map = this.make.tilemap({ key: "map" });
+    const tileset = map.addTilesetImage("plates", "tiles");
 
-    this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 250, 'ground');
-    this.platforms.create(750, 220, 'ground');
+    // const belowLayer = map.createStaticLayer("Below Player", tileset, 0, 0);
+    const worldLayer = map.createDynamicLayer("World", tileset, 0, 0);
+
+    worldLayer.setCollisionByProperty( { collides : true } );
+    worldLayer.setCollisionFromCollisionGroup();
 
 
-    this.movingPlatform = this.physics.add.image(400, 400, 'ground');
-    this.movingPlatform.setImmovable(true);
-    this.movingPlatform.body.allowGravity = false;
-    this.movingPlatform.setVelocityX(50);
+    // Hero
+    this.hero = this.physics.add.sprite(20, 400, 'hero', 0).setScale(1.6);
 
-    this.hero = this.physics.add.sprite(0, 400, 'hero', 0).setScale(1.6);
-    this.hero.setBounce(0.2);
-    this.hero.setCollideWorldBounds(true);
+    this.physics.add.collider(worldLayer, this.hero);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -51,23 +41,10 @@ class PlayGame extends Phaser.Scene{
     });
 
 
-    this.stars = this.physics.add.group({
-      key: 'star',
-      repeat: 11,
-      setXY: { x: 12, y: 0, stepX: 70 }
-    });
-
-    this.stars.children.iterate(function (child) {
-      child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-    });
-
-    this.physics.add.collider(this.hero, this.platforms);
-    this.physics.add.collider(this.hero, this.movingPlatform);
-    this.physics.add.collider(this.stars, this.platforms);
-    this.physics.add.collider(this.stars, this.movingPlatform);
-    this.physics.add.overlap(this.hero, this.stars, this.collectStar, null, this);
+    const camera = this.cameras.main;
+    camera.startFollow(this.hero);
+    camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   }
-
 
   update () {
 
@@ -81,17 +58,11 @@ class PlayGame extends Phaser.Scene{
       this.hero.setVelocityX(0);
       this.hero.anims.play('turn');
     }
-    if (this.cursors.up.isDown && this.hero.body.touching.down){
-      this.hero.setVelocityY(-330);
+    if (this.cursors.up.isDown && this.hero.body.blocked.down){
+      this.hero.setVelocityY(-180);
     }
-    if (this.movingPlatform.x >= 500){
-      this.movingPlatform.setVelocityX(-50);
-    }
-    else if (this.movingPlatform.x <= 300){
-      this.movingPlatform.setVelocityX(50);
-    }
-  }
 
+  }
 }
 
 export default PlayGame;
