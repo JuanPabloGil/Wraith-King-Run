@@ -1,12 +1,14 @@
 import Phaser from "phaser";
-import DemoScene from "./movePlayer";
 
 const config = {
   type: Phaser.CANVAS,
-  parent: "phaser-example",
-  width: 800,
+  parent: "container",
+  width: 600,
   height: 600,
-  scene: [DemoScene]
+  backgroundColor: '#2d2d2d',
+  scene: [
+    Bootloader
+  ]
 };
 
 new Phaser.Game(config);
