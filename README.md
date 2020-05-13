@@ -26,3 +26,6 @@ and webpack will automatically recompile and reload your server (available at `h
 by default).
 
 ## Customizing Template
+
+##Aknldgm
+https://opengameart.org/content/animated-coins
