@@ -19,6 +19,13 @@ class Bootloader extends Phaser.Scene{
       frameWidth:16,
       frameHeight: 16
     });
+
+    var url;
+    url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexbbcodetextplugin.min.js';
+    this.load.plugin('rexbbcodetextplugin', url, true);
+
+    url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rextexteditplugin.min.js';
+    this.load.plugin('rextexteditplugin', url, true);
   }
 
   create() {

@@ -16,7 +16,7 @@ var MainMenu = new Phaser.Class({
 
     text.once('pointerup', function () {
 
-      this.scene.start('LeaderBoard');
+      this.scene.start('PlayGame');
 
     }, this);
   }

@@ -94,7 +94,10 @@ class PlayGame extends Phaser.Scene{
 
     // if the hero is underwater...
     if(this.dead){
-      this.scene.start("LeaderBoard");
+      this.data.set('score', this.score);
+      this.scene.start("LeaderBoard", { score: this.score });
+
+
     }
 
 

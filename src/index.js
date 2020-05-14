@@ -3,6 +3,8 @@ import Bootloader from "./bootloader";
 import PlayGame from './scenes/playGame';
 import MainMenu from './scenes/mainMenu';
 import LeaderBoard from './scenes/leaderBoard';
+import TextBox from 'phaser3-rex-plugins/templates/ui/ui-components.js';
+
 
 const gameOptions = {
   playerGravity: 900,
@@ -18,6 +20,9 @@ const config = {
   width: 800,
   height: 600,
   backgroundColor: '#2d2d2d',
+  dom: {
+    createContainer: true
+  },
   physics: {
     default: "arcade",
     arcade: {
