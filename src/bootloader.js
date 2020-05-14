@@ -2,6 +2,7 @@ import heroImg from "./assets/sprites/hero.png";
 import goldCoin from "./assets/sprites/coin_gold.png";
 import tilesImg from "./assets/maps/plates.png";
 
+
 class Bootloader extends Phaser.Scene{
   constructor() {
     super( { key: "Bootloader" } );
@@ -18,11 +19,10 @@ class Bootloader extends Phaser.Scene{
       frameWidth:16,
       frameHeight: 16
     });
-
   }
 
   create() {
-    this.scene.start("PlayGame");
+    this.scene.start("mainmenu");
   }
 }
 

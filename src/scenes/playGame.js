@@ -94,7 +94,7 @@ class PlayGame extends Phaser.Scene{
 
     // if the hero is underwater...
     if(this.dead){
-      this.scene.restart();
+      this.scene.start("LeaderBoard");
     }
 
 
@@ -112,7 +112,6 @@ class PlayGame extends Phaser.Scene{
     if (this.cursors.up.isDown && this.hero.body.blocked.down || this.hero.body.blocked.right || this.hero.body.blocked.left){
       this.hero.setVelocityY(-180);
     }
-
 
 
   }

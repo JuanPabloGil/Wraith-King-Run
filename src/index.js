@@ -1,6 +1,8 @@
 import Phaser from "phaser";
 import Bootloader from "./bootloader";
 import PlayGame from './scenes/playGame';
+import MainMenu from './scenes/mainMenu';
+import LeaderBoard from './scenes/leaderBoard';
 
 const gameOptions = {
   playerGravity: 900,
@@ -26,7 +28,9 @@ const config = {
   },
   scene: [
     Bootloader,
-    PlayGame
+    MainMenu,
+    PlayGame,
+    LeaderBoard
   ]
 
 };
