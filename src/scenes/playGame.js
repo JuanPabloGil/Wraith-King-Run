@@ -6,36 +6,31 @@ class PlayGame extends Phaser.Scene {
   }
 
   create() {
-    const sound = this.sound.add('bg',{
+    const sound = this.sound.add('bg', {
       mute: false,
-      volume: .1,
+      volume: 0.1,
       rate: 1,
       detune: 0,
       seek: 0,
       loop: true,
-      delay: 0
+      delay: 0,
     });
 
     this.musicOn = true;
     sound.play();
 
-    this.input.keyboard.on('keydown-SPACE',() => {
-      if(this.musicOn) {
+    this.input.keyboard.on('keydown-SPACE', () => {
+      if (this.musicOn) {
         sound.stop();
         this.musicOn = false;
       } else {
         sound.play();
         this.musicOn = true;
       }
-
     });
 
 
-
-
-
     this.score = 0;
-
 
     this.map = this.make.tilemap({ key: 'map' });
     const tileset = this.map.addTilesetImage('plates', 'tiles', 48, 48, 0, 0);

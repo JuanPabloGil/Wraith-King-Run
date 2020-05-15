@@ -3,6 +3,7 @@ import Bootloader from './bootloader';
 import PlayGame from './scenes/playGame';
 import MainMenu from './scenes/mainMenu';
 import LeaderBoard from './scenes/leaderBoard';
+import Controls from './scenes/controls';
 
 const config = {
   type: Phaser.CANVAS,
@@ -24,6 +25,7 @@ const config = {
   scene: [
     Bootloader,
     MainMenu,
+    Controls,
     PlayGame,
     LeaderBoard,
   ],

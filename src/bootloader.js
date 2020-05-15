@@ -4,7 +4,6 @@ import goldCoin from './assets/sprites/coin_gold.png';
 import tilesImg from './assets/maps/plates.png';
 
 
-
 class Bootloader extends Phaser.Scene {
   constructor() {
     super({ key: 'Bootloader' });
@@ -30,12 +29,9 @@ class Bootloader extends Phaser.Scene {
 
     url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rextexteditplugin.min.js';
     this.load.plugin('rextexteditplugin', url, true);
-
-
   }
 
   create() {
-
     this.scene.start('mainmenu');
   }
 }

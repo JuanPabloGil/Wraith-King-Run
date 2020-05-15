@@ -11,7 +11,6 @@ class LeaderBoard extends Phaser.Scene {
   }
 
   create() {
-
     this.printText = this.add.rexBBCodeText(400, 40, 'Your Name', {
       color: 'green',
       fontSize: '24px',
@@ -62,9 +61,9 @@ class LeaderBoard extends Phaser.Scene {
     this.add.container(300, 550, [menu]);
     menu.setInteractive();
 
-    menu.on('pointerdown', function on() {
+    menu.on('pointerdown', () => {
       this.scene.start('mainmenu');
-    }.bind(this));
+    });
 
     const text = this.add.text(0, 0, 'Save score', { font: '32px Courier', fill: '#fff' });
     this.add.container(300, 70, [text]);
@@ -80,12 +79,6 @@ class LeaderBoard extends Phaser.Scene {
       helper.saveScore(matchResult);
       this.scene.start('mainmenu');
     }, this);
-  }
-
-
-  update() {
-
-
   }
 }
 
