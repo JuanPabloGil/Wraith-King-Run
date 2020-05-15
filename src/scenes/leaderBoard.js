@@ -26,7 +26,7 @@ class LeaderBoard extends Phaser.Scene {
     this.add.text(280, 150, `Your score: ${this.finalScore}`, { font: '32px Courier', fill: '#fff' });
     this.add.text(100, 250, 'Leaderboard Rank', { font: '32px Courier' });
 
-    const loading = this.add.text(100, 300, 'Loading LeaderBoard', { font: '42px Courier' });
+    const loading = this.add.text(100, 300, 'Loading LeaderBoard....', { font: '12px Courier' });
 
     helper.getScoresAsync().then(response => {
       if (response[0] !== undefined) {
