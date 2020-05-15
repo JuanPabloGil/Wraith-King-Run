@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 class PlayGame extends Phaser.Scene {
   constructor() {
     super('PlayGame');
@@ -60,7 +62,7 @@ class PlayGame extends Phaser.Scene {
 
     this.children = this.coins.getChildren();
 
-    for (let i = 0; i < this.children.length; i++) {
+    for (let i = 0; i < this.children.length; i += 1) {
       const x = Phaser.Math.Between(50, 2290);
       const y = Phaser.Math.Between(50, 2000);
       this.children[i].setPosition(x, y).play('spinCoin');
@@ -84,13 +86,13 @@ class PlayGame extends Phaser.Scene {
     const tile = this.map.getTileAtWorldXY(this.hero.x, this.hero.y);
 
 
-    this.dead = tile != null && tile.index == 3;
+    this.dead = tile != null && tile.index === 3;
     if (this.dead) {
       this.data.set('score', this.score);
       this.scene.start('LeaderBoard', { score: this.score });
     }
 
-    this.win = tile != null && tile.index == 2;
+    this.win = tile != null && tile.index === 2;
     if (this.win) {
       this.data.set('score', this.score + 300);
       this.scene.start('LeaderBoard', { score: this.score + 300 });
@@ -107,7 +109,9 @@ class PlayGame extends Phaser.Scene {
       this.hero.setVelocityX(0);
       this.hero.anims.play('turn');
     }
-    if (this.cursors.up.isDown && this.hero.body.blocked.down || this.hero.body.blocked.right || this.hero.body.blocked.left) {
+    if ((this.cursors.up.isDown && this.hero.body.blocked.down)
+       || this.hero.body.blocked.right
+        || this.hero.body.blocked.left) {
       this.hero.setVelocityY(-180);
     }
   }

@@ -1,4 +1,4 @@
-const helper = (function () {
+const helper = (function helper() {
   function createGame() {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/');
@@ -38,7 +38,7 @@ const helper = (function () {
         const leaders = getLeaders(dataOrdered);
         return leaders;
       })
-      .catch(error => console.warn(error));
+      .catch(error => error);
   }
 
 

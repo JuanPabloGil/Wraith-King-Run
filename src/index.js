@@ -1,18 +1,8 @@
 import Phaser from 'phaser';
-import TextBox from 'phaser3-rex-plugins/templates/ui/ui-components.js';
 import Bootloader from './bootloader';
 import PlayGame from './scenes/playGame';
 import MainMenu from './scenes/mainMenu';
 import LeaderBoard from './scenes/leaderBoard';
-
-
-const gameOptions = {
-  playerGravity: 900,
-  playerGrip: 100,
-  playerSpeed: 200,
-  playerJump: 400,
-  playerDoubleJump: 300,
-};
 
 const config = {
   type: Phaser.CANVAS,
@@ -41,4 +31,4 @@ const config = {
 };
 
 
-new Phaser.Game(config);
+window.game = new Phaser.Game(config);

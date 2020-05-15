@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 const MainMenu = new Phaser.Class({
 
   Extends: Phaser.Scene,
@@ -11,10 +13,10 @@ const MainMenu = new Phaser.Class({
 
   create() {
     const text = this.add.text(0, 0, 'Start Game', { font: '32px Courier', fill: '#fff' });
-    const container = this.add.container(300, 250, [text]);
+    this.add.container(300, 250, [text]);
     text.setInteractive();
 
-    text.once('pointerup', function () {
+    text.once('pointerup', function once() {
       this.scene.start('PlayGame');
     }, this);
   },
