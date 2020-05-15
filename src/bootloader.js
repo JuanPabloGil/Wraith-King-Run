@@ -4,14 +4,17 @@ import goldCoin from './assets/sprites/coin_gold.png';
 import tilesImg from './assets/maps/plates.png';
 
 
+
 class Bootloader extends Phaser.Scene {
   constructor() {
     super({ key: 'Bootloader' });
   }
 
   preload() {
+    this.load.audio('bg', 'src/assets/music/music-bg.OGG');
     this.load.image('tiles', tilesImg);
-    this.load.tilemapTiledJSON('map', '../src/assets/maps/map.json' );
+    // this.load.tilemapTiledJSON('map', '../src/assets/maps/map.json' ); Able To deploy
+    this.load.tilemapTiledJSON('map', 'src/assets/maps/map.json');
     this.load.spritesheet('goldCoin', goldCoin, {
       frameWidth: 32,
       frameHeight: 32,
@@ -27,9 +30,12 @@ class Bootloader extends Phaser.Scene {
 
     url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rextexteditplugin.min.js';
     this.load.plugin('rextexteditplugin', url, true);
+
+
   }
 
   create() {
+
     this.scene.start('mainmenu');
   }
 }

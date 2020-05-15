@@ -12,14 +12,17 @@ const MainMenu = new Phaser.Class({
   },
 
   create() {
-    const text = this.add.text(0, 0, 'Start Game', { font: '32px Courier', fill: '#fff' });
-    this.add.container(300, 250, [text]);
-    text.setInteractive();
+    const startGame = this.add.text(0, 0, 'Start Game', { font: '32px Courier', fill: '#fff' });
+    this.add.container(300, 250, [startGame]);
+    startGame.setInteractive();
 
-    text.once('pointerup', function once() {
+    startGame.on('pointerup', function once() {
       this.scene.start('PlayGame');
     }, this);
-  },
+
+  }
+
+
 
 });
 

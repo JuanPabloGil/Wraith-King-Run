@@ -6,6 +6,34 @@ class PlayGame extends Phaser.Scene {
   }
 
   create() {
+    const sound = this.sound.add('bg',{
+      mute: false,
+      volume: .1,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0
+    });
+
+    this.musicOn = true;
+    sound.play();
+
+    this.input.keyboard.on('keydown-SPACE',() => {
+      if(this.musicOn) {
+        sound.stop();
+        this.musicOn = false;
+      } else {
+        sound.play();
+        this.musicOn = true;
+      }
+
+    });
+
+
+
+
+
     this.score = 0;
 
 
@@ -110,8 +138,8 @@ class PlayGame extends Phaser.Scene {
       this.hero.anims.play('turn');
     }
     if ((this.cursors.up.isDown && this.hero.body.blocked.down)
-       || this.hero.body.blocked.right
-        || this.hero.body.blocked.left) {
+    || this.hero.body.blocked.right
+    || this.hero.body.blocked.left) {
       this.hero.setVelocityY(-180);
     }
   }

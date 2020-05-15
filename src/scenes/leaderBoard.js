@@ -11,7 +11,8 @@ class LeaderBoard extends Phaser.Scene {
   }
 
   create() {
-    const printText = this.add.rexBBCodeText(400, 40, 'Your Name', {
+
+    this.printText = this.add.rexBBCodeText(400, 40, 'Your Name', {
       color: 'green',
       fontSize: '24px',
       fixedWidth: 190,
@@ -20,18 +21,20 @@ class LeaderBoard extends Phaser.Scene {
       .setOrigin(0.5)
       .setInteractive()
       .on('pointerdown', function on() {
-        this.plugins.get('rextexteditplugin').edit(printText);
+        this.plugins.get('rextexteditplugin').edit(this.printText);
       }, this);
 
     this.add.text(280, 150, `Your score: ${this.finalScore}`, { font: '32px Courier', fill: '#fff' });
-
     this.add.text(100, 250, 'Leaderboard Rank', { font: '32px Courier' });
+
+    const loading = this.add.text(100, 300, 'Loading LeaderBoard', { font: '42px Courier' });
 
     helper.getScoresAsync().then(response => {
       if (response[0] !== undefined) {
         this.add.text(100, 300,
           `Rank 1 --- Score: ${response[0].score} User: ${response[0].user}`,
           { font: '24px Courier', fill: '#fff' });
+        loading.text = '';
       }
       if (response[1] !== undefined) {
         this.add.text(100, 325,
@@ -55,22 +58,34 @@ class LeaderBoard extends Phaser.Scene {
       }
     });
 
+    const menu = this.add.text(0, 0, 'Return to menu', { font: '22px Courier', fill: '#fff' });
+    this.add.container(300, 550, [menu]);
+    menu.setInteractive();
+
+    menu.on('pointerdown', function on() {
+      this.scene.start('mainmenu');
+    }.bind(this));
 
     const text = this.add.text(0, 0, 'Save score', { font: '32px Courier', fill: '#fff' });
     this.add.container(300, 70, [text]);
     text.setInteractive();
-
     text.once('pointerup', function once() {
       // Original : ygjSnFswoDTxdV9llTIy
 
       const matchResult = {
-        user: printText.text,
+        user: this.printText.text,
         score: this.finalScore,
       };
 
       helper.saveScore(matchResult);
       this.scene.start('mainmenu');
     }, this);
+  }
+
+
+  update() {
+
+
   }
 }
 
