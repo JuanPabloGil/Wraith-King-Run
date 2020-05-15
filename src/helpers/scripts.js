@@ -23,21 +23,9 @@ const helper = (function(){
     return leaders;
   }
 
-  // function getScores(){
-  //   fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Zl4d7IVkemOTTVg2fUdz/scores')
-  //   .then(function(response) {
-  //     return response.json();
-  //   })
-  //   .then(function(myJson) {
-  //     const dataOrdered = orderData(myJson);
-  //     const leaders =  getLeaders(dataOrdered);
-  //     return leaders
-  //   });
-  // }
-
 
   function getScoresAsync(){
-    return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Zl4d7IVkemOTTVg2fUdz/scores',
+    return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9uKjYGDXVQ9NqRrcnypH/scores',
     {
       method: "GET",
       headers: {
@@ -57,12 +45,12 @@ const helper = (function(){
 
 
 
-  function saveScore(score, gameId){
+  function saveScore(score){
+    const gameId = "9uKjYGDXVQ9NqRrcnypH";
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores`);
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(JSON.stringify(score));
-    return xmlhttp ;
   }
 
   function printHello(){

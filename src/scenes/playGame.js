@@ -5,7 +5,8 @@ class PlayGame extends Phaser.Scene{
 
   create(){
     this.score = 0 ;
-    // Map
+
+
     this.map = this.make.tilemap({ key: "map" });
     const tileset = this.map.addTilesetImage("plates", "tiles", 48, 48, 0, 0)
     this.worldLayer = this.map.createStaticLayer("World", tileset);
@@ -13,14 +14,13 @@ class PlayGame extends Phaser.Scene{
     this.worldLayer.setCollisionFromCollisionGroup();
 
 
-    // Hero
     this.hero = this.physics.add.sprite(60, 2100, 'hero', 0).setScale(1.5);
     this.physics.add.collider(this.worldLayer, this.hero);
 
-    // Animations
+
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    // Hero Animations
+
     this.anims.create({
       key: 'left',
       frames: this.anims.generateFrameNumbers('hero', { start: 4, end: 7 }),
@@ -47,27 +47,26 @@ class PlayGame extends Phaser.Scene{
     });
 
 
-    // Move camara with hero
     this.camera = this.cameras.main;
     this.camera.startFollow(this.hero);
     this.camera.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
 
-    //Coins
+
     this.coins = this.physics.add.group({
       key: 'goldCoin',
       repeat: 20
     });
+    this.physics.add.collider(this.worldLayer, this.coins);
 
     this.children = this.coins.getChildren();
 
-    for (var i = 0; i < this.children.length; i++)
-    {
+    for (var i = 0; i < this.children.length; i++){
       var x = Phaser.Math.Between(50, 2290);
       var y = Phaser.Math.Between(50, 2000);
       this.children[i].setPosition(x, y).play("spinCoin");
     }
-    ////////////////////////////////////////////////////////////////////////////
-    this.physics.add.collider(this.worldLayer, this.coins);
+
+
     this.scoreText = this.add.text(10, 10, 'Score: '+ this.score, { font: '32px Courier', fill: '#fff' }).setScrollFactor(0);
     this.physics.add.overlap(this.hero, this.coins, this.collectStar, null, this);
     this.dead = false;
@@ -83,21 +82,21 @@ class PlayGame extends Phaser.Scene{
 
 
 
-
   update () {
 
     let tile = this.map.getTileAtWorldXY(this.hero.x, this.hero.y);
 
 
-    // hero is underwater when over a water tile
     this.dead = tile != null && tile.index == 3;
-
-    // if the hero is underwater...
     if(this.dead){
       this.data.set('score', this.score);
       this.scene.start("LeaderBoard", { score: this.score });
+    }
 
-
+    this.win = tile != null && tile.index == 2;
+    if(this.win){
+      this.data.set('score', this.score + 300);
+      this.scene.start("LeaderBoard", { score: this.score + 300 });
     }
 
 
@@ -111,7 +110,6 @@ class PlayGame extends Phaser.Scene{
       this.hero.setVelocityX(0);
       this.hero.anims.play('turn');
     }
-
     if (this.cursors.up.isDown && this.hero.body.blocked.down || this.hero.body.blocked.right || this.hero.body.blocked.left){
       this.hero.setVelocityY(-180);
     }
