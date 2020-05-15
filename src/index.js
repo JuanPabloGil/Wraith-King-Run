@@ -1,9 +1,9 @@
-import Phaser from "phaser";
-import Bootloader from "./bootloader";
+import Phaser from 'phaser';
+import TextBox from 'phaser3-rex-plugins/templates/ui/ui-components.js';
+import Bootloader from './bootloader';
 import PlayGame from './scenes/playGame';
 import MainMenu from './scenes/mainMenu';
 import LeaderBoard from './scenes/leaderBoard';
-import TextBox from 'phaser3-rex-plugins/templates/ui/ui-components.js';
 
 
 const gameOptions = {
@@ -11,32 +11,32 @@ const gameOptions = {
   playerGrip: 100,
   playerSpeed: 200,
   playerJump: 400,
-  playerDoubleJump: 300
+  playerDoubleJump: 300,
 };
 
 const config = {
   type: Phaser.CANVAS,
-  parent: "container",
+  parent: 'container',
   width: 800,
   height: 600,
   backgroundColor: '#2d2d2d',
   dom: {
-    createContainer: true
+    createContainer: true,
   },
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
       gravity: {
-        y: 300
-      }
-    }
+        y: 300,
+      },
+    },
   },
   scene: [
     Bootloader,
     MainMenu,
     PlayGame,
-    LeaderBoard
-  ]
+    LeaderBoard,
+  ],
 
 };
 

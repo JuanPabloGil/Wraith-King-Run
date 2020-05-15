@@ -1,16 +1,16 @@
-class PlayGame extends Phaser.Scene{
-  constructor(){
-    super("PlayGame");
+class PlayGame extends Phaser.Scene {
+  constructor() {
+    super('PlayGame');
   }
 
-  create(){
-    this.score = 0 ;
+  create() {
+    this.score = 0;
 
 
-    this.map = this.make.tilemap({ key: "map" });
-    const tileset = this.map.addTilesetImage("plates", "tiles", 48, 48, 0, 0)
-    this.worldLayer = this.map.createStaticLayer("World", tileset);
-    this.worldLayer.setCollisionByProperty( { collides : true } );
+    this.map = this.make.tilemap({ key: 'map' });
+    const tileset = this.map.addTilesetImage('plates', 'tiles', 48, 48, 0, 0);
+    this.worldLayer = this.map.createStaticLayer('World', tileset);
+    this.worldLayer.setCollisionByProperty({ collides: true });
     this.worldLayer.setCollisionFromCollisionGroup();
 
 
@@ -25,25 +25,25 @@ class PlayGame extends Phaser.Scene{
       key: 'left',
       frames: this.anims.generateFrameNumbers('hero', { start: 4, end: 7 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
       key: 'turn',
-      frames: [ { key: 'hero', frame: 0 } ],
-      frameRate: 20
+      frames: [{ key: 'hero', frame: 0 }],
+      frameRate: 20,
     });
     this.anims.create({
       key: 'right',
       frames: this.anims.generateFrameNumbers('hero', { start: 8, end: 11 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
-    //Coin Animations
+    // Coin Animations
     this.anims.create({
       key: 'spinCoin',
       frames: this.anims.generateFrameNumbers('goldCoin', { start: 0, end: 7 }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
 
 
@@ -54,67 +54,62 @@ class PlayGame extends Phaser.Scene{
 
     this.coins = this.physics.add.group({
       key: 'goldCoin',
-      repeat: 20
+      repeat: 20,
     });
     this.physics.add.collider(this.worldLayer, this.coins);
 
     this.children = this.coins.getChildren();
 
-    for (var i = 0; i < this.children.length; i++){
-      var x = Phaser.Math.Between(50, 2290);
-      var y = Phaser.Math.Between(50, 2000);
-      this.children[i].setPosition(x, y).play("spinCoin");
+    for (let i = 0; i < this.children.length; i++) {
+      const x = Phaser.Math.Between(50, 2290);
+      const y = Phaser.Math.Between(50, 2000);
+      this.children[i].setPosition(x, y).play('spinCoin');
     }
 
 
-    this.scoreText = this.add.text(10, 10, 'Score: '+ this.score, { font: '32px Courier', fill: '#fff' }).setScrollFactor(0);
+    this.scoreText = this.add.text(10, 10, `Score: ${this.score}`, { font: '32px Courier', fill: '#fff' }).setScrollFactor(0);
     this.physics.add.overlap(this.hero, this.coins, this.collectStar, null, this);
     this.dead = false;
-
   }
 
 
-  collectStar(player, coin){
+  collectStar(player, coin) {
     coin.disableBody(true, true);
     this.score += 100;
-    this.scoreText.setText('Score: ' + this.score );
+    this.scoreText.setText(`Score: ${this.score}`);
   }
 
 
-
-  update () {
-
-    let tile = this.map.getTileAtWorldXY(this.hero.x, this.hero.y);
+  update() {
+    const tile = this.map.getTileAtWorldXY(this.hero.x, this.hero.y);
 
 
     this.dead = tile != null && tile.index == 3;
-    if(this.dead){
+    if (this.dead) {
       this.data.set('score', this.score);
-      this.scene.start("LeaderBoard", { score: this.score });
+      this.scene.start('LeaderBoard', { score: this.score });
     }
 
     this.win = tile != null && tile.index == 2;
-    if(this.win){
+    if (this.win) {
       this.data.set('score', this.score + 300);
-      this.scene.start("LeaderBoard", { score: this.score + 300 });
+      this.scene.start('LeaderBoard', { score: this.score + 300 });
     }
 
 
-    if (this.cursors.left.isDown){
+    if (this.cursors.left.isDown) {
       this.hero.setVelocityX(-180);
       this.hero.anims.play('left', true);
-    }else if (this.cursors.right.isDown){
+    } else if (this.cursors.right.isDown) {
       this.hero.setVelocityX(180);
       this.hero.anims.play('right', true);
-    }else {
+    } else {
       this.hero.setVelocityX(0);
       this.hero.anims.play('turn');
     }
-    if (this.cursors.up.isDown && this.hero.body.blocked.down || this.hero.body.blocked.right || this.hero.body.blocked.left){
+    if (this.cursors.up.isDown && this.hero.body.blocked.down || this.hero.body.blocked.right || this.hero.body.blocked.left) {
       this.hero.setVelocityY(-180);
     }
-
-
   }
 }
 
