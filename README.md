@@ -68,7 +68,7 @@ Then a window will open on your default browser and you'll be able to play.
 
 ## Live Demo
 
-[Live Demo](https://JuanPabloGil.github.io/Tic-Tac-Toe-JS/)
+[Live Demo](https://5ebf8f553a8c2d0006531b40--cranky-ride-8b24f5.netlify.app/dist/)
 
 
 ### Run tests
