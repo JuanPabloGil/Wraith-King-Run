@@ -25,6 +25,7 @@ class Controls extends Phaser.Scene {
         - Jump using the " UP ARROW ".
         - Run using the "LEFT and RIGHT ARROWS".
         - Climb usign the "LEFT and RIGHT ARROWS" near a wall.
+        - Stop the music with the "SPACE BAR"
         `);
 
     const menu = this.add.text(0, 0, 'Return to menu', { font: '22px Courier', fill: '#fff' });
