@@ -13,7 +13,6 @@ class Bootloader extends Phaser.Scene {
   preload() {
     // this.load.audio('bg', '../src/assets/music/music-bg.OGG');
     this.load.image('tiles', tilesImg);
-    this.load.tilemapTiledJSON('map', 'src/assets/maps/map.json' );
     // this.load.tilemapTiledJSON('map', 'src/assets/maps/map.json');
     this.load.spritesheet('goldCoin', goldCoin, {
       frameWidth: 32,
