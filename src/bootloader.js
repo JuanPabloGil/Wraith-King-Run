@@ -4,7 +4,6 @@ import goldCoin from '../assets/sprites/coin_gold.png';
 import tilesImg from '../assets/maps/plates.png';
 
 
-
 class Bootloader extends Phaser.Scene {
   constructor() {
     super({ key: 'Bootloader' });

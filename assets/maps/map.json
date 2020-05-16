@@ -50,7 +50,7 @@
                          "type":"bool",
                          "value":true
                         }]
-                }, 
+                },
                 {
                  "id":1,
                  "properties":[
@@ -59,7 +59,7 @@
                          "type":"bool",
                          "value":false
                         }]
-                }, 
+                },
                 {
                  "id":2,
                  "properties":[
@@ -68,7 +68,7 @@
                          "type":"bool",
                          "value":false
                         }]
-                }, 
+                },
                 {
                  "id":3,
                  "properties":[
@@ -77,7 +77,7 @@
                          "type":"bool",
                          "value":true
                         }]
-                }, 
+                },
                 {
                  "id":4,
                  "properties":[
@@ -86,7 +86,7 @@
                          "type":"bool",
                          "value":true
                         }]
-                }, 
+                },
                 {
                  "id":5,
                  "properties":[
