@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import heroImg from './assets/sprites/hero.png';
 import goldCoin from './assets/sprites/coin_gold.png';
 import tilesImg from './assets/maps/plates.png';
-import audio from './assets/music/music-bg.OGG'
+import audio from './assets/music/music-bg.OGG';
 
 
 class Bootloader extends Phaser.Scene {
