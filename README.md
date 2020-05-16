@@ -1,6 +1,6 @@
 # Wraith King Run
 <p align="center">
-    <img src="/readme-img/image.png">
+    <img src="/readme-img/main-pic.png">
 </p>
 
 Wraith Kin Run is a platform game inspired by those hard-to-play games, but once you get familiar with the controls it's a lot of fun.
