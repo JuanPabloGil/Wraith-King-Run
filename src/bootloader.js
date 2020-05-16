@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import heroImg from './assets/sprites/hero.png';
 import goldCoin from './assets/sprites/coin_gold.png';
 import tilesImg from './assets/maps/plates.png';
-import audio from './assets/music/music-bg.OGG';
+
 
 
 class Bootloader extends Phaser.Scene {
@@ -11,10 +11,10 @@ class Bootloader extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio('bg', audio);
+    this.load.audio('bg', '../src/assets/music/music-bg.OGG');
     this.load.image('tiles', tilesImg);
     this.load.tilemapTiledJSON('map', '../src/assets/maps/map.json' );
-    // this.load.tilemapTiledJSON('map', 'src/assets/maps/map.json'); Local
+    // this.load.tilemapTiledJSON('map', 'src/assets/maps/map.json');
     this.load.spritesheet('goldCoin', goldCoin, {
       frameWidth: 32,
       frameHeight: 32,
