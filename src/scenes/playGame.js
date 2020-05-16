@@ -18,16 +18,16 @@ class PlayGame extends Phaser.Scene {
 
     this.musicOn = true;
     this.music.play();
-
-    this.input.keyboard.on('keydown-SPACE', () => {
-      if (this.musicOn) {
-        this.music.stop();
-        this.musicOn = false;
-      } else {
-        this.music.play();
-        this.musicOn = true;
-      }
-    });
+    // 
+    // this.input.keyboard.on('keydown-SPACE', () => {
+    //   if (this.musicOn) {
+    //     this.music.stop();
+    //     this.musicOn = false;
+    //   } else {
+    //     this.music.play();
+    //     this.musicOn = true;
+    //   }
+    // });
 
 
     this.score = 0;
