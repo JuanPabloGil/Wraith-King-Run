@@ -3,9 +3,8 @@
     <img src="/readme-img/main-pic.png">
 </p>
 
-Wraith Kin Run is a platform game inspired by those hard-to-play games, but once you get familiar with the controls it's a lot of fun.
-The game was developed with [Phaser 3](https://www.mapeditor.org/) a freamwork that allows us to create a game from scratch, assigned physics such as gravity, speed, animations, sounds and custom maps, for this project I Apolle of a tool called [Tiled Map Editor](https://www.mapeditor.org/) which allows us to create [compatible maps](https://developer.mozilla.org/en-US/docs/Games/Techniques/Tilemaps) with Phaser, as it opens the door for people with or without technical knowledge to create their own levels and play them!
-
+Wraith King Run is a platform game inspired by those hard-to-play games, but once you get familiar with the controls it's a lot of fun.
+The game was developed with [Phaser 3](https://www.mapeditor.org/) a freamwork that allows us to create a game from scratch, assigned physics such as gravity, speed, animations, sounds and custom maps, for this project I used a tool called [Tiled Map Editor](https://www.mapeditor.org/) which allows us to create [compatible maps](https://developer.mozilla.org/en-US/docs/Games/Techniques/Tilemaps) with Phaser, as it opens the door for people with or without technical knowledge to create their own levels and play them!
 
 
 ## Goal of the game.
