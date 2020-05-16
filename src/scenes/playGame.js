@@ -5,7 +5,7 @@ class PlayGame extends Phaser.Scene {
     super('PlayGame');
   }
 
-  // create() {
+  create() {
   //   this.music = this.sound.add('bg', {
   //     mute: false,
   //     volume: 0.1,
