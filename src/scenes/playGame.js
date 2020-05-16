@@ -5,7 +5,7 @@ class PlayGame extends Phaser.Scene {
     super('PlayGame');
   }
   preload(){
-    this.load.tilemapTiledJSON('map', 'assets/maps/map.json' );
+    this.load.tilemapTiledJSON('map', '../assets/maps/map.json' );
   }
 
   create() {
