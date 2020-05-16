@@ -1,6 +1,4 @@
 const helper = (function helper() {
-
-
   function orderData(data) {
     data.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
     return data;
@@ -19,20 +17,20 @@ const helper = (function helper() {
 
   function getScoresAsync() {
     return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ygjSnFswoDTxdV9llTIy/scores',
-    {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      const dataOrdered = orderData(responseData);
-      const leaders = getLeaders(dataOrdered);
-      return leaders;
-    })
-    .catch(error => error);
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => response.json())
+      .then((responseData) => {
+        const dataOrdered = orderData(responseData);
+        const leaders = getLeaders(dataOrdered);
+        return leaders;
+      })
+      .catch(error => error);
   }
 
 
