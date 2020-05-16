@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import heroImg from './assets/sprites/hero.png';
-import goldCoin from './assets/sprites/coin_gold.png';
-import tilesImg from './assets/maps/plates.png';
+import heroImg from '../assets/sprites/hero.png';
+import goldCoin from '../assets/sprites/coin_gold.png';
+import tilesImg from '../assets/maps/plates.png';
 
 
 
@@ -29,6 +29,8 @@ class Bootloader extends Phaser.Scene {
 
     url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rextexteditplugin.min.js';
     this.load.plugin('rextexteditplugin', url, true);
+
+    this.load.tilemapTiledJSON('map', 'assets/maps/map.json' );
   }
 
   create() {

@@ -4,10 +4,6 @@ class PlayGame extends Phaser.Scene {
   constructor() {
     super('PlayGame');
   }
-  preload(){
-    this.load.tilemapTiledJSON('map', '../assets/maps/map.json' );
-  }
-
   create() {
   //   this.music = this.sound.add('bg', {
   //     mute: false,
