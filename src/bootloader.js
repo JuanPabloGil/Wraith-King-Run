@@ -29,7 +29,7 @@ class Bootloader extends Phaser.Scene {
     url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rextexteditplugin.min.js';
     this.load.plugin('rextexteditplugin', url, true);
 
-    this.load.tilemapTiledJSON('map', 'assets/maps/map.json' );
+    this.load.tilemapTiledJSON('map', '../assets/maps/map.json' );
   }
 
   create() {
