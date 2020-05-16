@@ -6,18 +6,18 @@ class PlayGame extends Phaser.Scene {
   }
 
   create() {
-    this.music = this.sound.add('bg', {
-      mute: false,
-      volume: 0.1,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: true,
-      delay: 0,
-    });
-
-    this.musicOn = true;
-    this.music.play();
+    // this.music = this.sound.add('bg', {
+    //   mute: false,
+    //   volume: 0.1,
+    //   rate: 1,
+    //   detune: 0,
+    //   seek: 0,
+    //   loop: true,
+    //   delay: 0,
+    // });
+    //
+    // this.musicOn = true;
+    // this.music.play();
 
     this.input.keyboard.on('keydown-SPACE', () => {
       if (this.musicOn) {
@@ -111,14 +111,14 @@ class PlayGame extends Phaser.Scene {
 
     this.dead = tile != null && tile.index === 3;
     if (this.dead) {
-      this.music.stop();
+      // this.music.stop();
       this.data.set('score', this.score);
       this.scene.start('LeaderBoard', { score: this.score });
     }
 
     this.win = tile != null && tile.index === 2;
     if (this.win) {
-      this.music.stop();
+      // this.music.stop();
       this.data.set('score', this.score + 300);
       this.scene.start('LeaderBoard', { score: this.score + 300 });
     }
