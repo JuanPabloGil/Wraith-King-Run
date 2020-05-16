@@ -69,8 +69,6 @@ class LeaderBoard extends Phaser.Scene {
     this.add.container(300, 70, [text]);
     text.setInteractive();
     text.once('pointerup', function once() {
-      // Original : ygjSnFswoDTxdV9llTIy
-
       const matchResult = {
         user: this.printText.text,
         score: this.finalScore,

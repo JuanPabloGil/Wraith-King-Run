@@ -1,12 +1,4 @@
 const helper = (function helper() {
-  function createGame() {
-    const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('POST', 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/');
-    xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    xmlhttp.send(JSON.stringify({ name: 'Wraith King Run - Test' }));
-    return xmlhttp;
-  }
-
   function orderData(data) {
     data.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
     return data;
@@ -24,7 +16,7 @@ const helper = (function helper() {
 
 
   function getScoresAsync() {
-    return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/9uKjYGDXVQ9NqRrcnypH/scores',
+    return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ygjSnFswoDTxdV9llTIy/scores',
       {
         method: 'GET',
         headers: {
@@ -43,23 +35,16 @@ const helper = (function helper() {
 
 
   function saveScore(score) {
-    const gameId = '9uKjYGDXVQ9NqRrcnypH';
+    const gameId = 'ygjSnFswoDTxdV9llTIy';
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores`);
     xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     xmlhttp.send(JSON.stringify(score));
   }
 
-  function printHello() {
-    return 'Hola';
-  }
-
 
   return {
-    createGame,
-    // getScores,
     saveScore,
-    printHello,
     getScoresAsync,
   };
 }());
