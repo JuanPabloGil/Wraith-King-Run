@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line
 
 const MainMenu = new Phaser.Class({
 

@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line
 import Bootloader from './bootloader';
 import PlayGame from './scenes/playGame';
 import MainMenu from './scenes/mainMenu';

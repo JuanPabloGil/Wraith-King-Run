@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line
 import heroImg from './assets/sprites/hero.png';
 import goldCoin from './assets/sprites/coin_gold.png';
 import tilesImg from './assets/maps/plates.png';

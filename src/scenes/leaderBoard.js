@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line
 import helper from '../helpers/scripts';
 
 class LeaderBoard extends Phaser.Scene {
