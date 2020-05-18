@@ -6,31 +6,32 @@ const helper = (function helper() {
 
   function getLeaders(data) {
     const leaders = [];
-    for (let i = 0; i < 5; i += 1) {
-      if (data.result[i] != null) {
-        leaders.push(data.result[i]);
+
+      for (let i = 0; i < 5; i += 1) {
+        if (data.result[i] != null) {
+          leaders.push(data.result[i]);
+        }
       }
-    }
     return leaders;
   }
 
 
   function getScoresAsync() {
     return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ygjSnFswoDTxdV9llTIy/scores',
-      {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((response) => response.json())
-      .then((responseData) => {
-        const dataOrdered = orderData(responseData);
-        const leaders = getLeaders(dataOrdered);
-        return leaders;
-      })
-      .catch(error => error);
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      const dataOrdered = orderData(responseData);
+      const leaders = getLeaders(dataOrdered);
+      return leaders;
+    })
+    .catch(error => error);
   }
 
 
@@ -46,6 +47,8 @@ const helper = (function helper() {
   return {
     saveScore,
     getScoresAsync,
+    orderData,
+    getLeaders
   };
 }());
 
